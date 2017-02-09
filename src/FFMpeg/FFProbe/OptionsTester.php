@@ -60,6 +60,7 @@ class OptionsTester implements OptionsTesterInterface
         try {
             $output = $this->ffprobe->command(array('-help', '-loglevel', 'quiet'));
         } catch (ExecutionFailureException $e) {
+            throw $e;
             throw new RuntimeException('Your FFProbe version is too old and does not support `-help` option, please upgrade.', $e->getCode(), $e);
         }
 
